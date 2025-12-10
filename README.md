@@ -1,16 +1,31 @@
-# chat_app
+# flutter 채팅 어플 만들기 
 
-A new Flutter project.
+## 🏃진행사항 및 에러사항
+로그인 창 textformfield 부터 구현 
 
-## Getting Started
+### 수정사항
+<br>
 
-This project is a starting point for a Flutter application.
+## ⚒️기술 스택
+플러터
+<br>
 
-A few resources to get you started if this is your first Flutter project:
+## 📂커밋 컨벤션 가이드
+- feat: 새로운 기능 추가
+- fix: 버그 수정
+- docs: 문서 수정
+- style: 코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등)
+- design: 사용자 UI 디자인 변경 (CSS 등)
+- perf: 성능 개선
+- chore: 자잘한 수정이나 빌드 업데이트
+- rename: 파일 혹은 폴더명을 수정만 한 경우
+- remove: 파일을 삭제만 한 경우
+- test: 테스트 코드, 리팩토링 (Test Code)
+- refactor: 리팩토링 (Production Code)
+- build: 빌드 파일 수정
+- ci: CI 설정 파일 수정
+<br>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 결과 사진 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br>
