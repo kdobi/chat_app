@@ -1,7 +1,14 @@
 # flutter 채팅 어플 만들기 
 
 ## 🏃진행사항 및 에러사항
-로그인 창 textformfield 부터 구현 
+
+- 로그인 버튼 눌렸을때 바뀌어야 할것들
+
+1. positioned1 : to Yummy chat -> back  / signup -> signin
+
+2. positioned2 : login 버튼일때 항목 이메일과 password로 간소화하기 + 버튼 크기 맞춰 줄이기
+
+
 
 ### 수정사항
 <br>
