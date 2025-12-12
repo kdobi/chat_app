@@ -237,6 +237,43 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
           ),
+
+          // 전송버튼 
+          Positioned(
+            top: 430,
+            right: 0,
+            left: 0,
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.orange, Colors.red],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.3),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
