@@ -2,15 +2,12 @@
 
 ## 🏃진행사항 및 에러사항
 
-- 로그인 버튼 눌렸을때 바뀌어야 할것들
-
-1. positioned1 : to Yummy chat -> back  / signup -> signin
-
-2. positioned2 : login 버튼일때 항목 이메일과 password로 간소화하기 + 버튼 크기 맞춰 줄이기
-
+form field에 key값 지정 -> 로그인 & 사인업 필드 구분
+signup 필드 오버플로우 문제 스크롤로 해결하기 
 
 
 ### 수정사항
+
 <br>
 
 ## ⚒️기술 스택
