@@ -238,7 +238,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             ),
           ),
 
-          // 전송버튼 
+          // 전송버튼
           Positioned(
             top: 430,
             right: 0,
@@ -272,6 +272,32 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   child: Icon(Icons.arrow_forward, color: Colors.white),
                 ),
               ),
+            ),
+          ),
+
+          // 구글 로그인
+          Positioned(
+            top: MediaQuery.of(context).size.height - 125,
+            right: 0,
+            left: 0,
+            child: Column(
+              children: [
+                Text('or Signup with'),
+                SizedBox(height: 10),
+                TextButton.icon(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    minimumSize: Size(155, 40),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    backgroundColor: Palette.googleColor,
+                  ),
+                  icon: Icon(Icons.add),
+                  label: Text('Google'),
+                ),
+              ],
             ),
           ),
         ],
