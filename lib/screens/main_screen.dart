@@ -9,6 +9,8 @@ class LoginSignupScreen extends StatefulWidget {
 }
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
+  // 전역변수
+
   bool isSignupScreen = true;
   final _formKey = GlobalKey<FormState>();
   String userName = '';
@@ -32,7 +34,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         },
         child: Stack(
           children: [
-            // 배경 이미지
+            // 배경 이미지  ------------------------------------------------------------
             Positioned(
               top: 0,
               right: 0,
@@ -86,7 +88,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
 
-            // formfield
+            // formfield ------------------------------------------------------------
             AnimatedPositioned(
               duration: Duration(milliseconds: 200),
               curve: Curves.easeIn,
@@ -195,6 +197,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   onSaved: (value) {
                                     userName = value!;
                                   },
+                                  
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.account_circle,
@@ -225,7 +228,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 TextFormField(
                                   key: ValueKey(2),
                                   validator: (value) {
-                                    if (value!.isEmpty || value.contains('@')) {
+                                    if (value!.isEmpty ||
+                                        !value.contains('@')) {
                                       return '타당한 이메일 주소를 입력하세요.';
                                     }
                                     return null;
@@ -311,7 +315,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 TextFormField(
                                   key: ValueKey(4),
                                   validator: (value) {
-                                    if (value!.isEmpty || value.contains('@')) {
+                                    if (value!.isEmpty ||
+                                        !value.contains('@')) {
                                       return '타당한 이메일 주소를 입력하세요.';
                                     }
                                     return null;
@@ -355,7 +360,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     return null;
                                   },
                                   onSaved: (value) {
-                                    userEmail = value!;
+                                    userPassword = value!;
                                   },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -392,7 +397,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
 
-            // 전송버튼
+            // 전송버튼  ------------------------------------------------------------
             AnimatedPositioned(
               duration: Duration(milliseconds: 200),
               curve: Curves.easeIn,
@@ -438,7 +443,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
 
-            // 구글 로그인
+            // 구글 로그인  ------------------------------------------------------------
             AnimatedPositioned(
               duration: Duration(milliseconds: 200),
               curve: Curves.easeIn,
