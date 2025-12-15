@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/config/palette.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chat_app/screens/chat_screen.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -11,6 +13,7 @@ class LoginSignupScreen extends StatefulWidget {
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
   // 전역변수
 
+  final _authentication = FirebaseAuth.instance;
   bool isSignupScreen = true;
   final _formKey = GlobalKey<FormState>();
   String userName = '';
@@ -197,7 +200,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   onSaved: (value) {
                                     userName = value!;
                                   },
-                                  
+                                  onChanged: (value) {
+                                    userName = value;
+                                  },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.account_circle,
@@ -226,6 +231,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(height: 8),
                                 // 회원가입 이메일 텍스트 폼 필드
                                 TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   key: ValueKey(2),
                                   validator: (value) {
                                     if (value!.isEmpty ||
@@ -236,6 +242,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   },
                                   onSaved: (value) {
                                     userEmail = value!;
+                                  },
+                                  onChanged: (value) {
+                                    userEmail = value;
                                   },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -264,6 +273,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(height: 8),
                                 // 회원가입 비밀번호 텍스트 폼 필드
                                 TextFormField(
+                                  obscureText: true,
                                   key: ValueKey(3),
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
@@ -273,6 +283,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   },
                                   onSaved: (value) {
                                     userPassword = value!;
+                                  },
+                                  onChanged: (value) {
+                                    userPassword = value;
                                   },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -311,8 +324,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             key: _formKey,
                             child: Column(
                               children: [
-                                // 로그인 유저 이메일 텍스트 폼 필드
+                                // 로그인 이메일 텍스트 폼 필드
                                 TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   key: ValueKey(4),
                                   validator: (value) {
                                     if (value!.isEmpty ||
@@ -323,6 +337,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   },
                                   onSaved: (value) {
                                     userEmail = value!;
+                                  },
+                                  onChanged: (value) {
+                                    userEmail = value;
                                   },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -350,8 +367,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 8),
-                                // 로그인 유저 비밀번호 텍스트 폼 필드
+                                // 로그인 비밀번호 텍스트 폼 필드
                                 TextFormField(
+                                  obscureText: true,
                                   key: ValueKey(5),
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
@@ -361,6 +379,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   },
                                   onSaved: (value) {
                                     userPassword = value!;
+                                  },
+                                  onChanged: (value) {
+                                    userPassword = value;
                                   },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -414,11 +435,65 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50),
                   ),
+
                   // 내부 주황색 박스
                   child: GestureDetector(
-                    onTap: () {
-                      _tryVaildation();
+                    onTap: () async {
+                      if (isSignupScreen) {
+                        _tryVaildation();
+                        try {
+                          final newUser = await _authentication
+                              .createUserWithEmailAndPassword(
+                                email: userEmail,
+                                password: userPassword,
+                              );
+
+                          if (newUser.user != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ChatScreen();
+                                },
+                              ),
+                            );
+                          }
+                        } catch (e) {
+                          print(e);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('이메일과 비밀번호를 확인하세요.'),
+                              backgroundColor: Colors.blue,
+                            ),
+                          );
+                        }
+                      }
+
+                      if (!isSignupScreen) {
+                        _tryVaildation();
+
+                        try {
+                          final newUser = await _authentication
+                              .signInWithEmailAndPassword(
+                                email: userEmail,
+                                password: userPassword,
+                              );
+                          if (newUser.user != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ChatScreen();
+                                },
+                              ),
+                            );
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      }
                     },
+
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(

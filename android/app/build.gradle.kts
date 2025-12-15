@@ -9,7 +9,7 @@ plugins {
 dependencies {
   // Import the Firebase BoM
   implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-  implementation 'com.android.support:multidex:6.1.0'
+  implementation("androidx.multidex:multidex:2.0.1")
 
 
   // TODO: Add the dependencies for Firebase products you want to use
@@ -44,7 +44,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        multiDexEnabled true
+        multiDexEnabled = true
     }
 
     buildTypes {
