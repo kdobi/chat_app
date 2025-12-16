@@ -3,6 +3,7 @@ import 'package:chat_app/config/palette.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chat_app/screens/chat_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -41,7 +42,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           },
           child: Stack(
             children: [
-              // 배경 이미지  ------------------------------------------------------------
+              // 포지션) 배경 이미지  ------------------------------------------------------------
               Positioned(
                 top: 0,
                 right: 0,
@@ -98,7 +99,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ),
               ),
 
-              // formfield ------------------------------------------------------------
+              // 포지션) formfield ------------------------------------------------------------
               AnimatedPositioned(
                 duration: Duration(milliseconds: 200),
                 curve: Curves.easeIn,
@@ -425,7 +426,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ),
               ),
 
-              // 전송버튼  ------------------------------------------------------------
+              // 포지션) 전송버튼  ------------------------------------------------------------
               AnimatedPositioned(
                 duration: Duration(milliseconds: 200),
                 curve: Curves.easeIn,
@@ -449,6 +450,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                         setState(() {
                           showSpinner = true;
                         });
+                        // 회원가입 유저 아이디 등록
                         if (isSignupScreen) {
                           _tryVaildation();
                           try {
@@ -458,6 +460,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   password: userPassword,
                                 );
 
+                            // firebase에 user 정보 담는 파일 생성
+                            await FirebaseFirestore.instance
+                                .collection('user')
+                                .doc(newUser.user!.uid)
+                                .set({
+                                  'userName': userName,
+                                  'email': userEmail,
+                                });
+
+                            // 유저 아이디 등록 후 채팅 화면 이동
                             if (newUser.user != null) {
                               Navigator.push(
                                 context,
@@ -467,9 +479,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   },
                                 ),
                               );
-                              setState(() {
-                                showSpinner = false;
-                              });
                             }
                           } catch (e) {
                             print(e);
@@ -481,7 +490,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             );
                           }
                         }
-
+                        // 로그인 정보확인
                         if (!isSignupScreen) {
                           _tryVaildation();
 
@@ -492,14 +501,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   password: userPassword,
                                 );
                             if (newUser.user != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return ChatScreen();
-                                  },
-                                ),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) {
+                              //       return ChatScreen();
+                              //     },
+                              //   ),
+                              // );
                               setState(() {
                                 showSpinner = false;
                               });
@@ -534,7 +543,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ),
               ),
 
-              // 구글 로그인  ------------------------------------------------------------
+              // 포지션) 구글 로그인  ------------------------------------------------------------
               AnimatedPositioned(
                 duration: Duration(milliseconds: 200),
                 curve: Curves.easeIn,

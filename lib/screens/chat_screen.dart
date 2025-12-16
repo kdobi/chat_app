@@ -35,7 +35,18 @@ class __ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Chat screen')),
+      appBar: AppBar(
+        title: Text('Chat screen'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app_sharp, color: Colors.white),
+            onPressed: () {
+              _authentication.signOut();
+              // Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('chats/PeUQ2ejxWgroGuDFzUez/message')
@@ -45,7 +56,6 @@ class __ChatScreenState extends State<ChatScreen> {
               BuildContext context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
             ) {
-
               final docs = snapshot.data?.docs ?? [];
 
               return ListView.builder(
