@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/config/palette.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chat_app/screens/chat_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginSignupScreen extends StatefulWidget {
@@ -14,7 +15,6 @@ class LoginSignupScreen extends StatefulWidget {
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
   // 전역변수
-
   final _authentication = FirebaseAuth.instance;
   bool isSignupScreen = true;
   bool showSpinner = false;
