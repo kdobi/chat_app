@@ -448,7 +448,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     child: GestureDetector(
                       onTap: () async {
                         setState(() {
-                          showSpinner = true;
+                          // showSpinner = true;
                         });
                         // 회원가입 유저 아이디 등록
                         if (isSignupScreen) {
@@ -461,22 +461,18 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 );
 
                             // firebase에 user 정보 담는 파일 생성
-                            await FirebaseFirestore.instance
+                            await  FirebaseFirestore.instance
                                 .collection('user')
                                 .doc(newUser.user!.uid)
                                 .set({
                                   'userName': userName,
                                   'email': userEmail,
                                 });
-
+ 
                             // 유저 아이디 등록 후 채팅 화면 이동
                             if (newUser.user != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return ChatScreen();
-                                  },
+                              Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => ChatScreen(),
                                 ),
                               );
                             }
@@ -579,3 +575,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     );
   }
 }
+
+
+

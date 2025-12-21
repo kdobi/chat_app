@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewMessage extends StatefulWidget {
   const NewMessage({super.key});
@@ -8,7 +9,16 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
+  final _controller = TextEditingController();
   var _userEnterMessage = '';
+
+  void sendMessage() {
+    FocusScope.of(context).unfocus();
+    FirebaseFirestore.instance.collection('chat').add({
+      'text': _userEnterMessage,
+    });
+    _controller.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +28,8 @@ class _NewMessageState extends State<NewMessage> {
       child: Row(
         children: [
           Expanded(
-            child: TextFormField(
+            child: TextField(
+              controller: _controller,
               decoration: InputDecoration(labelText: 'Send a message...'),
               onChanged: (value) {
                 setState(() {
@@ -28,7 +39,7 @@ class _NewMessageState extends State<NewMessage> {
             ),
           ),
           IconButton(
-            onPressed: _userEnterMessage.trim().isEmpty ? null : (){},
+            onPressed: _userEnterMessage.trim().isEmpty ? null : sendMessage,
             icon: Icon(Icons.send),
             color: Colors.blue,
           ),

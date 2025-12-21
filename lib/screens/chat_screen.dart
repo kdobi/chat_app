@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:chat_app/chatting/chat/message.dart';
 import 'package:chat_app/chatting/chat/new_message.dart';
-import 'package:flutter/material.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -13,7 +14,7 @@ class ChatScreen extends StatefulWidget {
 
 class __ChatScreenState extends State<ChatScreen> {
   final _authentication = FirebaseAuth.instance;
-  User? loggedUser;
+  User?  loggedUser; 
 
   @override
   void initState() {

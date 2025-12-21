@@ -3,8 +3,8 @@ import 'package:chat_app/screens/chat_screen.dart';
 import 'package:chat_app/screens/main_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,3 +33,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

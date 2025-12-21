@@ -19,6 +19,7 @@ class Messages extends StatelessWidget {
             final chatDocs = snapshot.data!.docs;
 
             return ListView.builder(
+              reverse: true,
               itemCount: chatDocs.length,
               itemBuilder: (context, index) {
                 return Text(chatDocs[index]['text']);
