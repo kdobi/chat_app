@@ -28,26 +28,25 @@
 - ci: CI 설정 파일 수정
 <br>
 
-## 결과 사진 
 ## 📸 결과 화면
 
 ### 🔐 로그인 / 회원가입
 <div align="center">
-  <img src="chat_app/images/result/Login.png" width="240"/>
-  <img src="chat_app/images/result/SignUp.png" width="240"/>
+  <img src="images/result/Login.png" width="240"/>
+  <img src="images/result/SignUp.png" width="240"/>
 </div>
 
 <br>
 
 ### 💬 채팅 화면
 <div align="center">
-  <img src="chat_app/images/result/Chat.png" width="240"/>
+  <img src="images/result/Chat.png" width="240"/>
 </div>
 
 <br>
 
 ### 🗄️ Firestore DB / Security Rule
 <div align="center">
-  <img src="chat_app/images/result/DB.png" width="240"/>
-  <img src="chat_app/images/result/Rule.png" width="240"/>
+  <img src="images/result/DB.png" width="240"/>
+  <img src="images/result/Rule.png" width="240"/>
 </div>
