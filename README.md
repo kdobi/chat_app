@@ -1,15 +1,15 @@
-# flutter 채팅 어플 만들기 
+# 💬 flutter 채팅 어플 만들기 
 
 ## 🏃진행사항 및 에러사항
 
-플러터 27강 13분 
+2025.12.10 ~ 2025.12.22 / 프로젝트 종료
+<br>
 
 ### 수정사항
-
 <br>
 
 ## ⚒️기술 스택
-플러터
+<img src="https://img.shields.io/badge/flutter-02569B?style=flat-square&logo=flutter&logoColor=white"/>
 <br>
 
 ## 📂커밋 컨벤션 가이드
@@ -29,5 +29,25 @@
 <br>
 
 ## 결과 사진 
+## 📸 결과 화면
+
+### 🔐 로그인 / 회원가입
+<div align="center">
+  <img src="chat_app/images/result/Login.png" width="240"/>
+  <img src="chat_app/images/result/SignUp.png" width="240"/>
+</div>
 
 <br>
+
+### 💬 채팅 화면
+<div align="center">
+  <img src="chat_app/images/result/Chat.png" width="240"/>
+</div>
+
+<br>
+
+### 🗄️ Firestore DB / Security Rule
+<div align="center">
+  <img src="chat_app/images/result/DB.png" width="240"/>
+  <img src="chat_app/images/result/Rule.png" width="240"/>
+</div>
