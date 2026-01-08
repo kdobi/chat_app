@@ -8,9 +8,10 @@
 ### 수정사항
 <br>
 
-## ⚒️기술 스택
-<img src="https://img.shields.io/badge/flutter-02569B?style=flat-square&logo=flutter&logoColor=white"/>
-<br>
+## ⚒️ 기술 스택
+
+<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"/>
 
 ## 📂커밋 컨벤션 가이드
 - feat: 새로운 기능 추가
